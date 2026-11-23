@@ -34,7 +34,6 @@ namespace PipeFlow.EditorTools
             "Art/Screens/home", "Art/Screens/map0", "Art/Screens/game0",
             "Art/Tiles/Tile_3_0", "Art/Tiles/Tile_5_1", "Art/Tiles/Tile_10_0",
             "Art/Tiles/Wet_5_0_8", "Art/Tiles/left", "Art/Tiles/right",
-            "Art/Original/chest_closed", "Art/Original/chest_open",
             "Art/ChestFrames/C0_00", "Art/ChestFrames/C0_20",
             "Art/Map/Road_0_4", "Art/Map/Meter_0", "Art/Map/Meter_15"
         };

@@ -64,8 +64,8 @@ namespace PipeFlow
 
 
 
-        // Loads the imported Unity texture first, then the PNG bytes bundled offline.
-        // The raw fallback avoids blank screens if a platform cannot import a PNG asset.
+        // Loads the imported Unity texture first, then the source PNG on disk.
+        // The fallback avoids blank screens if the PNG import is unavailable.
         private readonly Dictionary<string, Texture2D> nativeArtCache = new Dictionary<string, Texture2D>();
         private readonly List<Texture2D> runtimeDecodedArt = new List<Texture2D>();
         private readonly HashSet<string> missingNativeArt = new HashSet<string>();
@@ -80,11 +80,9 @@ namespace PipeFlow
             }
             if (result == null)
             {
-                TextAsset png = Resources.Load<TextAsset>("RawArt/" + path);
-                byte[] imageBytes = png != null ? png.bytes : null;
+                byte[] imageBytes = null;
 #if UNITY_EDITOR
-                // Editor-only last resort: read the source PNG directly from disk.
-                if (imageBytes == null || imageBytes.Length == 0)
+                // Editor-only fallback: read the source PNG directly from disk.
                 {
                     string originalPath = System.IO.Path.Combine(Application.dataPath, "Resources", path + ".png");
                     if (System.IO.File.Exists(originalPath)) imageBytes = System.IO.File.ReadAllBytes(originalPath);

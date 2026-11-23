@@ -36,11 +36,10 @@ namespace PipeFlow.EditorTools
         private static void Check(string key, ref int verified, ref int missing)
         {
             string png = "Assets/Resources/" + key + ".png";
-            string fallback = "Assets/Resources/RawArt/" + key + ".bytes";
-            if (!File.Exists(png) || !File.Exists(fallback))
+            if (!File.Exists(png))
             {
                 missing++;
-                Debug.LogError("Missing artwork or raw fallback: " + key);
+                Debug.LogError("Missing artwork: " + key);
             }
             else verified++;
         }
